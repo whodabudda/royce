@@ -61,10 +61,7 @@ mailer.log
 
 # Ignore files with paswrdz.
 /config/local_env.yml
-/config/secrets.yml
 /config/database.yml
-/config/environments/production.rb
-/config/application.rb
 
 # Ignore files placed in a hold area
 app/assets/holdarea
@@ -86,7 +83,6 @@ tt*
 /node_modules
 /public/packs
 /public/packs-test
-/node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
@@ -102,8 +98,8 @@ scratchpad*
 
 #ignore symlink and deploy directories
 dev
-releases/
+releases
 stage
 
 #ignore activestorage directories
-storage
+/storage

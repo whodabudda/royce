@@ -64,7 +64,9 @@ namespace :deploy do
 	Rake::Task["publishing"].clear_actions  #will prevent changing the 'current->release' symlink 
 #	before :finishing, :copy_shared_files
 end
-Rake::Task["puma:restart"].clear_actions  #will prevent puma restart
+
+#Rake::Task["deploy:check:linked_files"].clear_actions  #will prevent 
+#Rake::Task["puma:restart"].clear_actions  #will prevent puma restart if capistrano_puma gem installed
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
