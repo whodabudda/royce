@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Royce</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= stylesheet_packs_with_chunks_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  </head>
+  <body>
+      <%= render partial: "shared/navbar/navbar_default" %>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+      <% if devise_controller? %>
+        <div class="container" style="height: calc(100vh - 75px - 50px); width: 500px; overflow: scroll;border: 3px solid #e5e5e5;margin-top: 10px;margin-bottom: 100px;" >
+         <%=yield%>
+        </div>
+      <% else %>
+        <%= yield %>
+      <% end %>
+      <%=render partial: "shared/footer" %>
+  <div id="modal-holder"></div>
+  </body>
+</html>

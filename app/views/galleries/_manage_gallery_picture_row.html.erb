@@ -1,0 +1,5 @@
+
+
+<%= link_to (image_tag p.image.variant(resize_to_limit: [100, 100])),{controller: "galleries", action: "remove_gallery_picture", remote: true,picture_id: p.id,gallery_id: gallery_id, "data-turbolinks" => false} ,id: "gallery_#{gallery_id}_picture_#{p.id}"%> 
+
+

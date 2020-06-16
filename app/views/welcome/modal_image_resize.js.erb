@@ -1,0 +1,6 @@
+
+
+<%picture = Picture.find(image)%>
+$("#pblogModalLongTitle").text('<%= escape_javascript("#{picture.title}").html_safe %>');
+$('.modal-body-placeholder').html('<%= j render partial: "shared/utils/image_resize", locals: { picture: picture } %>');
+$('#pblogModal').modal("show");

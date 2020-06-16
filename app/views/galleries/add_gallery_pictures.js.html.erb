@@ -1,0 +1,4 @@
+
+<%gallery_ids.each do |g| %>
+	$('#gallery_<%=g%>').append("<%= escape_javascript("#{render :partial => 'galleries/manage_gallery_picture_row', :locals => { gallery_id: g, p: picture }}").html_safe %>");
+<%end%>

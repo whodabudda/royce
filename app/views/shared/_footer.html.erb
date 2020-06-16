@@ -1,0 +1,23 @@
+
+<% 
+    @footer_message = local_assigns[:footer_message] 
+    if @footer_message.nil? 
+     @footer_message = ""
+    end
+#    @footer_message += " filters: " if session[:rants_only] or session[:mycomments_only] 
+#    @footer_message += " RANTS "  if session[:rants_only] 
+#    @footer_message += " AUTHOR" if session[:mycomments_only]
+    my_debug("In shared/footer: footer_message: #{@footer_message} , local_assigns_message: #{local_assigns[:footer_message]}") 
+%>
+    <div class="container-fluid py-3">
+    <footer class="footer bg-faded mt-4 fixed-bottom">
+        <div class="row">
+            <div class="col-6 small footer-message">
+			     <%= @footer_message %> 
+            </div>
+            <div class="col-6 small text-right">
+                ©2017 Whodabudda, Royce Inc.
+            </div>
+        </div>
+    </footer>
+    </div>

@@ -1,0 +1,3 @@
+
+$("#gallery_<%=gallery.id%>").replaceWith("<%= escape_javascript("#{render :partial => 'galleries/gallery_row', :locals => { gallery:  gallery, gsl: gsl  }}").html_safe %>");
+//document.location.reload()

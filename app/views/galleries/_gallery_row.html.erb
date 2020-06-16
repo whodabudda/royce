@@ -1,0 +1,31 @@
+
+
+<%
+
+#gsl = session["gallery_#{gallery.id}_size_level".to_sym]
+gsl = session["gallery_#{gallery.id}_size_level".to_sym] if local_assigns[:gsl].nil?
+gsl = 1 if gsl.nil?
+gsl = gsl * 10
+Rails.logger.info "In gallery_row partial, image_size_level  is: #{gsl}"
+%>
+
+<div id="gallery_<%=gallery.id%>">   
+<div class="row ml-1 mb-1">
+<%if gallery.pictures.any?  %> 
+	<%gallery.pictures.each  do |i| %>
+		<%#= image_tag i.variant(resize_to_limit: [400, 200]), style: "width: 100%" %>
+		<%#= image_tag i, style: "width: 100%; height: 100%;" %>
+		 <%#= link_to (image_tag Picture.find(i.picture_id).image),controller: "welcome", action: "modal_image_resize", remote: true,image: i, "data-turbolinks" => false  %> 
+     
+		<div class="card ml-1" style="width: <%=gsl%>%; height: <%=gsl%>%;" >
+		 <%= link_to (image_tag i.image ,style: "width: 100%; height: 100%;"),controller: "welcome", action: "modal_image_resize", remote: true,image: i.id, "data-turbolinks" => false  %> 
+		<!--div class="card-body">
+		    <h4 class="card-title">Image Title</h4>
+		</div-->
+		</div>
+	<%end%>
+<%else%>
+	<p>"No images attached to this Gallery"</p>
+<%end%>
+</div>
+</div>

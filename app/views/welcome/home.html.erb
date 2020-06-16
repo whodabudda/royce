@@ -1,0 +1,20 @@
+
+<div class="container-flex">
+  <p id="notice"><%= notice %></p>
+  <h1 class="text-center">Royce Gallery</h1>
+ 	<% @galleries.each do |gallery| %>
+	  <div class="row">
+		<div class="col-md-12">
+	 		<h1 class="text-left" style="position: relative; width: 100%; height: 100%;"><%=gallery.name%>    <%=link_to (image_tag "grid-two-up-2x.png") , controller: "welcome",action: "resize_icons", remote: true , id: gallery.id, direction: "up"  %>  <%=link_to (image_tag "grid-four-up-2x.png") , controller: "welcome", action: "resize_icons", remote: true ,id: gallery.id, direction: "down" %> 
+
+	 		</h1>
+	 		<br/>
+	 	</div>
+    	</div>
+       <!-- needed for ajax call to expand/shrink size of images in a gallery -->
+	       	<%= render partial: "galleries/gallery_row", locals: {gallery: gallery} %>
+	<%end%>
+	<%= link_to 'New Gallery', new_gallery_path if admin_signed_in?%>
+</div>
+<%=render "shared/modal_dialog" %>
+	<%#= link_to image_tag(cc.picture.url, class:"img-thumbnail"),controller: "utils", action: "modal_image_resize", remote: true, image_name: cc.picture.url,image_title: cc.title, "data-turbolinks" => false  %> 

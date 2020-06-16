@@ -1,0 +1,43 @@
+<div class="container-flex">
+  <p id="notice"><%= notice %></p>
+  <h1 class="text-center">Royce Gallery - Manage Galleries</h1>
+  <h1 class="text-left" style="position: relative; width: 100%; height: 100%;">
+         All Pictures
+  </h1>
+  <div class="row ml-1 mb-1">
+    <div class="col-md-12">
+      <% @pictures.each do |p| %>
+         <%= link_to (image_tag p.image.variant(resize_to_limit: [100, 100])),controller: "galleries", action: "add_gallery_pictures", remote: true,picture_id: p.id, "data-turbolinks" => false  %> 
+      <%end%>
+    </div>
+  </div>
+  <% @galleries.each do |gallery| %>
+    <div class="row ml-1 mb-1">
+      <div class="col-md-12">
+        <h1 class="text-left" style="position: relative; width: 100%; height: 100%;">
+          <%=gallery.name%>    
+          <%=link_to (image_tag "lightbulb-2x.png") , {controller: "welcome", action: "gallery_name_filter", remote: true , id: gallery.id},id: "lightbulb_#{gallery.id}" , style: "filter: invert(66%) sepia(64%) saturate(6182%) hue-rotate(90deg) brightness(128%) contrast(118%)"%>
+        </h1>
+        <br/>
+      </div>
+    </div>
+    <div class="row ml-1 mb-1">
+      <div class="col-md-12">
+        <div id="gallery_<%=gallery.id%>">
+          <%if gallery.pictures.any?  %> 
+            <% gallery.pictures.each  do |p| %>
+    
+
+              <%= link_to (image_tag p.image.variant(resize_to_limit: [100, 100])),{controller: "galleries", action: "remove_gallery_picture", remote: true,picture_id: p.id,gallery_id: gallery.id, "data-turbolinks" => false} ,id: "gallery_#{gallery.id}_picture_#{p.id}"%> 
+
+            <%end%>
+          <%else%>
+            <p>"No images attached to this Gallery"</p>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  <%= link_to 'New Gallery', new_gallery_path if admin_signed_in?%>
+</div>
+<%=render "shared/modal_dialog" %>

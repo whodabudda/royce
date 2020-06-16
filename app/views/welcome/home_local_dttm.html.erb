@@ -1,0 +1,20 @@
+<!--
+This view is never displayed. It only is called from welcomecontroller#home to set the local
+browsers timezone in the session. This is then used to format dates into the users own tz.
+The local tz is set in the session, and formatx dates by calling set_current_user_timezone in 
+the application controller.
+
+This approach allows the root view to be displayed in the local tz, without having to actually
+render it twice, once without the date param, and then with.  
+
+It also allows us to find the local tz without adding extra js libraries.
+-->
+<div>
+<%= link_to 'render root with local_dttm',  welcome_home_path , class: "local_dttm" ,id: "local_dttm_id" , :method => :post %> 
+</div>
+<script type="text/javascript">
+let local_dttm = Date()
+var a = document.getElementById('local_dttm_id'); //or grab it by tagname etc
+a.href = a.href + "?local_dttm=" + local_dttm
+a.click()
+</script>

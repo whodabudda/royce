@@ -1,0 +1,9 @@
+
+var x = document.getElementById("gallery_<%=@gid%>")
+if (x.style.display === "none") {
+    x.style.display = "block";
+    document.getElementById("lightbulb_<%=gid%>").style.filter = "invert(66%) sepia(64%) saturate(6182%) hue-rotate(90deg) brightness(128%) contrast(118%)";
+} else {
+    x.style.display = "none";
+    document.getElementById("lightbulb_<%=gid%>").style.filter = "invert(14%) sepia(77%) saturate(5107%) hue-rotate(356deg) brightness(102%) contrast(121%)";
+}
