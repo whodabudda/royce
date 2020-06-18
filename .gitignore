@@ -43,6 +43,8 @@ rerun.txt
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
+# seeds can contain sensitive data
+seeds.rb
 
 # Ignore all logfiles and tempfiles.
 /log/*

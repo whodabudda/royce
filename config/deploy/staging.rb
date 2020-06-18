@@ -6,6 +6,9 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
+# If the environment differs from the stage name
+set :rails_env, 'staging'
+
 
 set :application, "roycestage"
 set :repo_url, "git@github.com:whodabudda/royce.git"
@@ -25,8 +28,9 @@ set :deploy_to_localhost, ENV.fetch("USE_LOCALHOST",false)
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
-set :my_roles, %w{app}
-# Default deploy_to directory is /var/www/my_app_name
+set :my_roles, %w{app db}
+set :migration_role, :db
+
 if fetch(:deploy_to_localhost)
 	set :deploy_to, "/home/whodabudda/#{fetch(:application)}"
 	server "localhost", user: "whodabudda", roles: fetch(:my_roles)
@@ -62,6 +66,7 @@ namespace :deploy do
 	end
 	before "deploy:check:directories", :copy_shared_files
 	after "deploy:new_release_path", :copy_node_modules
+	before "deploy:finishing", "deploy:migrate"
 	Rake::Task["publishing"].clear_actions  #will prevent changing the 'current->release' symlink 
 #	before :finishing, :copy_shared_files
 end
