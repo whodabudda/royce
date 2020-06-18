@@ -28,7 +28,7 @@ set :deploy_to_localhost, ENV.fetch("USE_LOCALHOST",false)
 set :my_roles, %w{app}
 # Default deploy_to directory is /var/www/my_app_name
 if fetch(:deploy_to_localhost)
-	set :deploy_to, "/home/whodabudda/sites/#{fetch(:application)}"
+	set :deploy_to, "/home/whodabudda/#{fetch(:application)}"
 	server "localhost", user: "whodabudda", roles: fetch(:my_roles)
 else
 	set :deploy_to, "/home/whodabudda/#{fetch(:application)}"
@@ -60,7 +60,8 @@ namespace :deploy do
 		end
 		puts "continuing...."
 	end
-	after "deploy:new_release_path", :copy_shared_files
+	before "deploy:check:directories", :copy_shared_files
+	after "deploy:new_release_path", :copy_node_modules
 	Rake::Task["publishing"].clear_actions  #will prevent changing the 'current->release' symlink 
 #	before :finishing, :copy_shared_files
 end
