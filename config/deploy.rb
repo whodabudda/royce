@@ -25,7 +25,7 @@ set :repo_url, "git@github.com:whodabudda/royce.git"
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/local_env.yml','config/environments/production.rb')
+set :linked_files, fetch(:linked_files, []).push('config/local_env.yml')
 
 
 # Default value for linked_dirs is []

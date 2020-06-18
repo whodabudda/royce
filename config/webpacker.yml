@@ -94,3 +94,15 @@ production:
 
   # Cache manifest.json for performance
   cache_manifest: true
+  
+staging:
+  <<: *default
+  # use same values as Production 
+  compile: false
+  check_yarn_integrity: false
+
+  # Extract and emit a css file
+  extract_css: true
+
+  # Cache manifest.json for performance
+  cache_manifest: true

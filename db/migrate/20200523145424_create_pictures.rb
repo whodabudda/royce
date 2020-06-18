@@ -1,4 +1,4 @@
-class CreateDrawings < ActiveRecord::Migration[6.0]
+class CreatePictures < ActiveRecord::Migration[6.0]
   def change
     create_table :pictures do |t|
       t.date :created_on_date
