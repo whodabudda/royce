@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_picture, only: [:show, :edit, :update, :destroy,:modal_picture_annotate]
+  before_action :authenticate_admin!
   # GET /pictures
   # GET /pictures.json
   def index
@@ -19,6 +19,11 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
+  end
+ def modal_picture_annotate
+    respond_to do |format|
+       format.js 
+    end
   end
 
   # POST /pictures
@@ -41,7 +46,7 @@ class PicturesController < ApplicationController
   # PATCH/PUT /pictures/1.json
   def update
     respond_to do |format|
-      @picture.picture.attach(picture_params[:picture])
+      #@picture.picture.attach(picture_params[:picture])
       if @picture.update(picture_params)
         format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
         format.json { render :show, status: :ok, location: @picture }

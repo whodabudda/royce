@@ -44,7 +44,6 @@ else
 	set :deploy_to, "/home/whodabudda/#{fetch(:application)}"
 	server "whodabudda", user: "whodabudda", roles: fetch(:my_roles), port: 7822
 end
-
 namespace :deploy do
 
 	ask(:continue,false)
@@ -59,11 +58,12 @@ namespace :deploy do
 		end
 		puts "continuing...."
 	end
-	after "deploy:new_release_path", :copy_shared_files
+	before "deploy:check:directories", :copy_shared_files
+	after "deploy:new_release_path", :copy_node_modules
+	before "deploy:finishing", "deploy:migrate"
 	Rake::Task["publishing"].clear_actions  #will prevent changing the 'current->release' symlink 
 #	before :finishing, :copy_shared_files
 end
-Rake::Task["puma:restart"].clear_actions  #will prevent puma restart
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5

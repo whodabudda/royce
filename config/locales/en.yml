@@ -23,34 +23,37 @@ en:
  About the Artist:
      "Bio":
        desc: >
-        Nancy R. Weisman started drawing as a young, single mother. 
-        Her art has evolved over the years into a collection of fun, whimsical,
+        Nancy Weisman started drawing as a young, single mother. 
+        Her art has evolved over the years into a collection of fun, memetic,
         and sometimes slightly scary abstracts.
      "Use":
        desc: >
         All images in this collection are the copyrighted property of Nancy R. Weisman.
-        Any commercial use of these images requires written permission from Nancy R. Weisman.
+        Any commercial use of these images requires written permission from the Artist.
      "Contact":
        desc: >
-        If you want to comment, or contact Nancy R Weisman for any reason, you can
-        email at:  Nancy_weisman@sbcglobal.net
- about_page_text:
-     "P1":
-       name: The Mission
+        If you want to contact Nancy, you can email her at:  nancy_weisman@sbcglobal.net
+ How to use this website:
+     "About": 
+       name: "About: Royce Gallery v0.1"
+       desc: 
        desc: >
-        The Internet is crowded with opinion,  much of it unsupportable by fact.  The Whodabudda 
-        blog attempts to be a place where opinion is welcome and is documented with references to
-        facts and figures that give the opinion credibility.        
-     "P2":
-       name: Contributing
-       desc: >
-        If you would like to submit an Article, to be posted for others to comment upon, please email
-        your article to: whodabudda@gmail.com.   
-        The Article should conform to the standards outlined on the Doc tab.
-     "P3":
-       name: Being an Administrator
-       desc: >
-        Administrators can create Articles without prior review.  They can review comments and assign a 
-        status to those comments.  Administrators essentially control the quality of site content.  As such,
-        anyone who wants to be an admin of this site will go through a vetting process.   If you are interested,
-        please send an email to whodabudda@gmail.com to start the process.
+        Not much to tell, really.
+
+
+        You can browse the pictures.  If there are multiple galleries and you want to hide one, 
+        use the filter menu on the navigation bar.  Click on one of the images to see it enlarged
+        and to view additional attributes such as name or description, that may have been added by the artist.
+
+
+        The little boxes next to the gallery name are for re-sizing that galleries images.  The box with
+        4 squares means larger images, the one with 12 squares means smaller images.  If the size no longer
+        changes when you click the box, then you have reached the limit for resizing in that 
+        particular direction.
+
+
+        We havn't added a print menu to format greeting cards, postcards etc.,  but may consider
+        doing so if enough people request it.
+
+
+        More images will be added as time passes because Nancy is very productive and loves to share.

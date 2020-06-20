@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'welcome/set_local_session_tz'
   get 'welcome/gallery_name_filter'
   get 'welcome/modal_image_resize'
+  get 'pictures/modal_picture_annotate'
   get 'galleries/remove_gallery_picture'
   get 'galleries/add_gallery_pictures'
 #  get "galleries/manage" => 'galleries#manage' , as => :manage

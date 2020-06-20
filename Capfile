@@ -3,7 +3,7 @@ require "capistrano/setup"
 
 # Include default deployment tasks
 require "capistrano/deploy"
-
+require 'capistrano/rails' #ppk 06/15/20
 # Load the SCM plugin appropriate to your project:
 #
 # require "capistrano/scm/hg"

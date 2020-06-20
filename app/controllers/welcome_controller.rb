@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
   def resize_icons
     gallery = Gallery.find(params[:id])
     gsl = session["gallery_#{gallery.id}_size_level".to_sym]
-    gsl = 5 if gsl.nil? 
+    gsl = 1 if gsl.nil? 
     direction = params[:direction]
     if direction == "up"
       gsl += 1 unless gsl == 10
@@ -32,11 +32,11 @@ def gallery_name_filter
     Rails.logger.info "In gallery_name_filter" 
     @gid = params[:id].to_i
     Rails.logger.info "@gid is: #{@gid}" 
+    session[:galleries_active].include?(@gid) ? session[:galleries_active].delete(@gid) : session[:galleries_active] << @gid
+    Rails.logger.info "Session galleries_active: #{session[:galleries_active]}" 
     respond_to do |format|
        format.js { render 'gallery_name_filter.js.erb', locals: { gid: @gid} }
     end
-    session[:galleries_active].include?(@gid) ? session[:galleries_active].delete(@gid) : session[:galleries_active] << @gid
-    Rails.logger.info "Session galleries_active: #{session[:galleries_active]}" 
   end
   
 
@@ -55,6 +55,14 @@ def gallery_name_filter
       end
     end
     @galleries = Gallery.all
+    #
+    #set up the session variable here once.  It can be revised in gallery_name_filter and 
+    #in teh galleries controller
+    #
+    if session[:galleries_active].nil?
+      session[:galleries_active] = []
+      @galleries.each do |g| session[:galleries_active] << g.id end
+    end
     Rails.logger.info "WelcomeController:home returning #{@galleries.length} records " 
   end
 

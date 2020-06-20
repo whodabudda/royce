@@ -1,9 +1,18 @@
 <div class="modal-body">
 <div class="container-fluid">
 <div class="row">
-<div class="col- col-md-8">
- <%= image_tag picture.image,style: "width: 100%; height: 100%;" %> 
+<div class="col- col-md-12">
+<div class="card">
+ <div class="card-body">
+ <%= image_tag picture.image,style: "width: 100%; height: 80%;"%> 
+ <p class="card-text"> <%=picture.comment %> </p>
+  <div class="card-footer text-muted text-center">
+ 	<p> <%=picture.image.filename %> </p>
+  </div>
+</div>
+ <%#= image_tag picture.image,style: "width: 100%; height: 100%;" %> 
  <%#= image_tag ActiveStorage::Attachment.find(image),style: "width: 100%; height: 100%;" %> 
+</div>
 </div>
 </div>
 </div>

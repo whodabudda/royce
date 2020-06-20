@@ -39,8 +39,9 @@
                 <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdownMenuLink">
                     <%= link_to 'New Gallery',  [:new ,"gallery".underscore ],"data-turbolinks" => false, :class => "dropdown-item"  %>
                     <%# TODO: remove hard-coded id for image_container%>
-                    <%= link_to 'Add Images (Upload)',  [:edit ,"image_container".underscore, id: 1 ],"data-turbolinks" => false, :class => "dropdown-item"  %>
-                    <%= link_to 'Manage Gallery Content', manage_path, "data-turbolinks" => false ,:class => "dropdown-item"  %>
+                    <%= link_to 'Add Images (Upload)',  [:edit ,"image_container".underscore, id: 1 ],:class => "dropdown-item"  %>
+                    <%= link_to 'Manage Gallery Content', manage_path,:class => "dropdown-item"  %>
+                    <%= link_to 'Annotate Images',pictures_path,:class => "dropdown-item"  %>
                 </div>
             </li> 
           <% end %>

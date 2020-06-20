@@ -1,3 +1,8 @@
+<!--
+ <div class="col-6"> 
+-->
+<%= image_tag picture.image.variant(resize_to_limit: [100, 100]) %>
+ <div class="row justify-content-center">
 <%= form_with(model: picture, local: true) do |form| %>
   <% if picture.errors.any? %>
     <div id="error_explanation">
@@ -11,27 +16,35 @@
     </div>
   <% end %>
 
+  <div class="form-group">
   <div class="field">
     <%= form.label :created_on_date %>
     <%= form.date_select :created_on_date %>
   </div>
+  </div>
 
+  <div class="form-group">
   <div class="field">
     <%= form.label :title %>
     <%= form.text_area :title %>
   </div>
+  </div>
 
+  <div class="form-group">
   <div class="field">
     <%= form.label :moniker %>
     <%= form.text_area :moniker %>
   </div>
+  </div>
 
+  <div class="form-group">
   <div class="field">
     <%= form.label :comment %>
     <%= form.text_area :comment %>
   </div>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
-  </div>
+</div>
 <% end %>

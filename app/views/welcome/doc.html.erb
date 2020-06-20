@@ -1,2 +1,25 @@
-<h1>Welcome#doc</h1>
-<p>Find me in app/views/welcome/doc.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 justify-content-center m-5">
+     <%  
+         #
+         #The review status can also be translated using 
+         #rails I18n.t :key, scope: [:comma separated scope names]
+         #  ex:  I18n.t :name, scope: [:comment_review_status, :NOTR]
+         #or
+         #rails I18n.t 'dot.separated.scope.names'
+         # ex: show NOTR:  I18n.t 'comment_review_status.NOTR.name'
+         # 
+         data = YAML::load(File.open("config/locales/en.yml"))
+         data["en"]["How to use this website"].each do |k|
+     %>
+       <h4> <%= k[1]["name"] %> </h4>
+       <p>  <%= simple_format(k[1]["desc"]).html_safe %>  </p>
+     <% end %>
+     <p> <%#= cookies[:ajs_anonymous_id] %> </p>
+     <p> <%#= action_name %> </p>
+     <p> <%#= session.inspect %> </p>
+     <p> <%#= request.headers.env.reject { |key| key.to_s.include?('.') } %> </p>
+   </div>
+  </div>
+</div>

@@ -1,50 +1,24 @@
+<div class="container-fluid">
 <p id="notice"><%= notice %></p>
-  <div class="container">
-    <div class="row">
-        <div class="col-sm-3 mx-3">
+<h1>Pictures</h1>
 
-<h1>Drawings</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Picture</th>
-      <th>Created on date</th>
-      <th>Title</th>
-      <th>Moniker</th>
-      <th>Comment</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pictures.each do |picture| %>
-      <tr>
-
-        <td>
-          <!--The class on the img tag apparently needs to be in the img tag itself
-              , doesn't seem to work if it is in an enclosing div
-          -->
-          <div class="thumbnail">
-            <%#= image_tag picture.picture.variant(resize_to_limit: [100, 100]), style: "width:100%" if picture.picture.attached? %>
-            <%= image_tag picture.image, style: "width:100%" if picture.image.attached? %>
-          </div>
-        </td>
-        <td><%= picture.created_on_date %></td>
-        <td><%= picture.title %></td>
-        <td><%= picture.moniker %></td>
-        <td><%= picture.comment %></td>
-        <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="row">
+ <!--div class="card-deck"-->
+ <%@pictures.each  do |p| %>
+  <div class="col-sm-2">
+  <div class="card" style="max-width: 40rem">
+ <div class="card-body">
+   <p class="card-title"> <%=p.title %> </p>
+     <%= link_to (image_tag p.image.variant(resize_to_limit: [100, 100]),class: "card-img-top" ),controller: "pictures", action: "modal_picture_annotate", remote: true, "data-turbolinks" => false,id: p.id %> 
+ <p class="card-text"> <%=p.comment %> </p>
+  <div class="card-footer text-muted text-center">
+  <p> <%=p.image.filename %> </p>
+  </div>
 </div>
 </div>
 </div>
+  <%end%>
+  </div>
 
-<%= link_to 'New Drawing', new_picture_path %>
+</div>
+<%=render "shared/modal_dialog" %>

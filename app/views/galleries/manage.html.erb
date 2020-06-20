@@ -4,6 +4,7 @@
   <h1 class="text-left" style="position: relative; width: 100%; height: 100%;">
          All Pictures
   </h1>
+  <!--  These are all the images available to arrange into galleries -->
   <div class="row ml-1 mb-1">
     <div class="col-md-12">
       <% @pictures.each do |p| %>
@@ -15,20 +16,22 @@
     <div class="row ml-1 mb-1">
       <div class="col-md-12">
         <h1 class="text-left" style="position: relative; width: 100%; height: 100%;">
+         <!--  The gallery header, along with lightbulb icon that switches the gallery on/off -->
           <%=gallery.name%>    
-          <%=link_to (image_tag "lightbulb-2x.png") , {controller: "welcome", action: "gallery_name_filter", remote: true , id: gallery.id},id: "lightbulb_#{gallery.id}" , style: "filter: invert(66%) sepia(64%) saturate(6182%) hue-rotate(90deg) brightness(128%) contrast(118%)"%>
+          <%=link_to (image_tag "lightbulb-2x.png") , {controller: "welcome", action: "gallery_name_filter", remote: true , id: gallery.id},id: "lightbulb_#{gallery.id}" , style: "filter: invert(14%) sepia(77%) saturate(5107%) hue-rotate(356deg) brightness(102%) contrast(121%)"%>
         </h1>
         <br/>
       </div>
     </div>
     <div class="row ml-1 mb-1">
       <div class="col-md-12">
-        <div id="gallery_<%=gallery.id%>">
+        <div id="gallery_<%=gallery.id%>" style="display: none;" >
           <%if gallery.pictures.any?  %> 
+            <!--  The images assigned to each gallery -->
             <% gallery.pictures.each  do |p| %>
     
-
-              <%= link_to (image_tag p.image.variant(resize_to_limit: [100, 100])),{controller: "galleries", action: "remove_gallery_picture", remote: true,picture_id: p.id,gallery_id: gallery.id, "data-turbolinks" => false} ,id: "gallery_#{gallery.id}_picture_#{p.id}"%> 
+            <%= render 'manage_gallery_picture_row' , gallery_id: gallery.id, p: p %>
+              <%#= link_to (image_tag p.image.variant(resize_to_limit: [100, 100])),{controller: "galleries", action: "remove_gallery_picture", remote: true,picture_id: p.id,gallery_id: gallery.id, "data-turbolinks" => false} ,id: "gallery_#{gallery.id}_picture_#{p.id}"%> 
 
             <%end%>
           <%else%>

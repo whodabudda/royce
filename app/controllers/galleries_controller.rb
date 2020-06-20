@@ -46,7 +46,7 @@ class GalleriesController < ApplicationController
     @pictures = Picture.all
     @galleries = Gallery.all
     session[:galleries_active] = []
-    @galleries.each do |g| session[:galleries_active] << g.id end
+#    @galleries.each do |g| session[:galleries_active] << g.id end
   end
 
   def smallerIcons
