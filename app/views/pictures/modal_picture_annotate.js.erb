@@ -1,0 +1,5 @@
+<% picture = @picture %>
+//$("#pblogModalLongTitle").css("class" , "modal-title w-100 text-center");
+$("#pblogModalLongTitle").text('<%= escape_javascript("#{picture.title}").html_safe %>');
+$('.modal-body-placeholder').html('<%= j render partial: "form", locals: { picture: picture } %>');
+$('#pblogModal').modal("show");
