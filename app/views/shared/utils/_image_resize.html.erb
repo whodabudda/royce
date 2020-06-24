@@ -1,18 +1,16 @@
 <div class="modal-body">
 <div class="container-fluid">
-<div class="row">
-<div class="col- col-md-12">
-<div class="card">
- <div class="card-body">
- <%= image_tag picture.image,style: "width: 100%; height: 80%;"%> 
- <p class="card-text"> <%=picture.comment %> </p>
-  <div class="card-footer text-muted text-center">
- 	<p> <%=picture.image.filename %> </p>
-  </div>
+<div class="row align-items-start">
+<!--div class="card" style="height: 100%; width: 100%;padding: 10px;"-->
+<!--div class="card"-->
+<div class="col-9">
+ <%#= image_tag picture.image,class: "img-fluid .float-xs-left" %> 
+ <%#= image_tag picture.image,class: "img-fluid" , style: "height: 80%; width: 90%;" %> 
+ <%= image_tag picture.image,class: "img-fluid mb-3", style: "max-height: calc(100vh - 120px);width: 100%;overflow: hidden;" %> 
 </div>
- <%#= image_tag picture.image,style: "width: 100%; height: 100%;" %> 
- <%#= image_tag ActiveStorage::Attachment.find(image),style: "width: 100%; height: 100%;" %> 
-</div>
+<div class="col-3">
+ <p> <%=picture.comment %> </p>
+ <%#= image_tag picture.image,class: "card-img-top-center",style: "height: 100%; width: 100%" %> 
 </div>
 </div>
 </div>

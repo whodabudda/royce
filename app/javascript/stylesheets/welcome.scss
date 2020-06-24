@@ -1,0 +1,32 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+footer {
+  max-height: 5%;
+  background-color: #f5f5f5;
+}
+.footer-message p{
+  color: rgba(black, 0.5);
+}
+.yaml-display {
+//  height: calc(100vh - 75px - 30px);
+//  border: 1px solid #bbb;
+//  margin-bottom: 5px;
+//  width: 100%;
+    -webkit-flex: 1 1 auto;
+    position: fixed;
+    overflow-y: auto;
+    min-height:100px;
+}
+.main-headings {
+  margin-bottom: 2px;
+}
+
+.modal-image-resize {
+  height: 100%;
+  width: 100%;
+}
+.modal-image {
+  max-height: calc(100vh -100px);
+  overflow-y: auto;
+}
