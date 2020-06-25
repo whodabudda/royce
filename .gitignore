@@ -97,6 +97,9 @@ pblog-prod-puma.conf
 pblog_systemd_env.conf
 puma.service
 scratchpad*
+#systemd config file is different for dev machine and prod machine. Don't overwite it on deploy,
+#for first time deploys, will have to copy over manually from ~/whodabudda, or re-create it from scratch
+sd_startup_env.conf
 
 #ignore symlink and deploy directories
 dev
