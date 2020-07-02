@@ -67,52 +67,29 @@ class GalleriesController < ApplicationController
     #@gallery = Gallery.new(gallery_params)
     @gallery = Gallery.create!(gallery_params)
 #    @gallery.images.attach(params[:gallery][:images])
-    redirect_to root_path
-#    respond_to do |format|
-#      if @gallery.save
-#        format.html { redirect_to @gallery, notice: 'Gallery was successfully created.' }
-#        format.json { render :show, status: :created, location: @gallery }
-#      else
-#        format.html { render :new }
-#        format.json { render json: @gallery.errors, status: :unprocessable_entity }
-#      end
-#    end
+    respond_to do |format|
+      if @gallery.save
+        format.html { redirect_to galleries_path, notice: 'Gallery was successfully updated.' }
+        format.json { render :show, status: :created, location: @gallery }
+      else
+        format.html { render :new }
+        format.json { render json: @gallery.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /galleries/1
   # PATCH/PUT /galleries/1.json
   def update
+
     respond_to do |format|
-
-      i = 0
-      gallery_params.each_key do |k|
-        Rails.logger.info("gallery_params key: #{k} ")
-      end
-      gallery_params.each_pair do |k,v|
-        Rails.logger.info("gallery_params key: #{k} : #{v} ")
-      end
-      if ! params.dig(:gallery, :images).nil?
-        Rails.logger.info("digging 1: #{params.dig(:gallery, :images)}")
-        Rails.logger.info("digging 2: #{params.dig(:gallery, :images ).class}")
-        images_array = params.dig(:gallery, :images )
-        Rails.logger.info("digging 2: #{images_array.length}")
-        images_array.each do |i| 
-          Rails.logger.info("images_array --
-               index:   #{images_array.index(i)} 
-   original_filename:   #{i.original_filename} 
-             headers:   #{i.headers}
-        headers type:   #{i.headers.class}
-          ")
-        end
-      end
-
-      if @gallery.update(gallery_params)
-        format.html { redirect_to @gallery, notice: 'Gallery was successfully updated.' }
+     if @gallery.update(gallery_params)
+        format.html { redirect_to galleries_path, notice: 'Gallery was successfully updated.' }
         format.json { render :show, status: :ok, location: @gallery }
-      else
+     else
         format.html { render :edit }
         format.json { render json: @gallery.errors, status: :unprocessable_entity }
-      end
+     end
     end
   end
 

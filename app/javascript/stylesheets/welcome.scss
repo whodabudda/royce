@@ -30,3 +30,13 @@ footer {
   max-height: calc(100vh -100px);
   overflow-y: auto;
 }
+.verticalLine {
+  background-image: linear-gradient(#000, #000);
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+/* Thick red border */
+.selected_border {
+  border: 3px solid red;
+}

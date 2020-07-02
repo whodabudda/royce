@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'welcome/gallery_name_filter'
   get 'welcome/modal_image_resize'
   get 'pictures/modal_picture_annotate'
+  get 'pictures/toggle_selection'
+  post 'pictures/remove'
   get 'galleries/remove_gallery_picture'
   get 'galleries/add_gallery_pictures'
 #  get "galleries/manage" => 'galleries#manage' , as => :manage

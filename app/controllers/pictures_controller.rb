@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show, :edit, :update, :destroy,:modal_picture_annotate]
+  before_action :set_picture, only: [:show, :edit, :update, :destroy,:modal_picture_annotate, :toggle_selection]
   before_action :authenticate_admin!
   # GET /pictures
   # GET /pictures.json
@@ -20,6 +20,38 @@ class PicturesController < ApplicationController
   # GET /pictures/1/edit
   def edit
   end
+
+  #deletes the blob and its associated attachements, picture records, and gallery assignments
+ def remove
+  if !session[:pictures_to_remove].nil?
+    session[:pictures_to_remove].each do |p| 
+      blob_id = Picture.find(p).image.blob_id
+      ActiveStorage::Attachment.where(blob_id: blob_id).each do |i| i.purge end
+      GalleryPicture.delete_by(picture_id: p)
+      Picture.delete_by(id: p)
+    end
+    session[:pictures_to_remove] = []
+  end
+  @pictures = Picture.all
+  respond_to do |format|
+    format.html { redirect_back fallback_location: edit_image_container_path(1)}
+  end
+ end
+ def toggle_selection
+    Rails.logger.info "In toggle_selection" 
+    @pic_id = params[:id].to_i
+    Rails.logger.info "@pic_id is: #{@pic_id}" 
+
+    #session variable is initialized in image_containers_controller#edit, which is the
+    #action that launches the add/remove pictures
+    session[:pictures_to_remove].include?(@pic_id) ? session[:pictures_to_remove].delete(@pic_id) : session[:pictures_to_remove] << @pic_id
+    Rails.logger.info "Session galleries_active: #{session[:pictures_to_remove]}" 
+
+    respond_to do |format|
+       format.js 
+    end
+  end
+
  def modal_picture_annotate
     respond_to do |format|
        format.js 

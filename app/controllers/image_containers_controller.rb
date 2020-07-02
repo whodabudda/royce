@@ -20,6 +20,8 @@ class ImageContainersController < ApplicationController
 =end
   # GET /image_containers/1/edit
   def edit
+    @pictures = Picture.all
+    session[:pictures_to_remove] = []
   end
 
   # POST /image_containers

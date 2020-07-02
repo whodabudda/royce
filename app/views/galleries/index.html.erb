@@ -12,22 +12,10 @@
   <tbody>
     <% @galleries.each do |gallery| %>
       <tr>
-        <td>gallery id<%= gallery.id %></td>
+        <td><%= render 'form', gallery: gallery %></td>
         <td>
-        <%if gallery.images.attached?  %> 
-           image ids: 
-          <%gallery.images.each  do |i| %>
-        <%#= image_tag i.variant(resize_to_limit: [100, 100]) %>
-             <%= i.id  %>
-          <%end%>
-        <%else%>
-          "No images attached to this Gallery"
-        <%end%>
-
-          <%#= image_tag gallery.images if gallery.images.attached? %></td>
-        <td><%= link_to 'Show', gallery %></td>
-        <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-        <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+             <%=link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' }%>
+        </td>
       </tr>
    <%end%>
   </tbody>
@@ -35,4 +23,5 @@
 
 <br>
 
-<%= link_to 'New Gallery', new_gallery_path %>
+<p><%= link_to 'New Gallery', new_gallery_path %></p>
+<p><%= link_to 'Back', root_path %></p>

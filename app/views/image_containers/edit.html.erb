@@ -1,5 +1,34 @@
-<h1>Add Images</h1>
+ <div class="container-fluid">
+  <div class="row ml-1 mb-1">
+    <div class="col mx-auto border-right">
+    <div class="text-center">
+		<h1>Remove Images</h1>
+    	<%= button_to "Clear Selections" %>
+    	<%= button_to "Remove Selected Images",controller: "pictures",action: "remove" %>
+    </div>
+    </div>
+    <div class="col m-auto p-auto border-left">
+    <div class="text-center">
+		<h1>Add Images</h1>
+		<%= render 'form', image_container: @image_container %>
+    </div>
+    </div>
+  </div>
 
-<%= render 'form', image_container: @image_container %>
+
+  <hr>
+  <h1 class="text-center" >
+         All Pictures
+  </h1>
+  <!--  These are all the images available to arrange into galleries -->
+  <div class="row ml-1 mb-1">
+    <div class="col">
+      <% @pictures.each do |p| %>
+         <%= link_to (image_tag p.image.variant(resize_to_limit: [100, 100]), class: "mx-2", id: "picture_id_#{p.id}"),controller: "pictures", action: "toggle_selection", remote: true,id: p.id, "data-turbolinks" => false  %> 
+      <%end%>
+    </div>
+  </div>
+
 
 <%= link_to 'home', root_path %>
+</div>
