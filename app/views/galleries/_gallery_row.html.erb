@@ -3,8 +3,11 @@
 <%
 
 #gsl = session["gallery_#{gallery.id}_size_level".to_sym]
+#
+# A gallery_size_level (gsl) of 2 will show 4 pictures accross on a cell phone
+#
 gsl = session["gallery_#{gallery.id}_size_level".to_sym] if local_assigns[:gsl].nil?
-gsl = 1 if gsl.nil?
+gsl = 2 if gsl.nil?
 gsl = gsl * 10
 Rails.logger.info "In gallery_row partial, image_size_level  is: #{gsl}"
 %>
